@@ -3,7 +3,9 @@ An automated computer vision system designed to grade Cassia Tora seeds in real-
 
 The system is built on a YOLOv8n architecture and deployed via a user-friendly Streamlit interface.
 
-🚀 Key Features
+
+
+# Key Features
 
 Real-Time Detection: Live inference via webcam or image upload.
 
@@ -15,7 +17,9 @@ Safety Interlocks: "Minimum Seed Count" logic prevents the user from scanning in
 
 Dynamic Calibration: Sidebar sliders allow non-technical users to adjust strictness (e.g., changing Max Impurity from 15% to 10%) without touching code.
 
-🛠️ The "Dump & Swipe" Protocol
+
+
+# The "Dump & Swipe" Protocol
 
 To overcome the physical limitation of occlusion (seeds hiding defects in deep piles), this project enforces a strict physical protocol:
 
@@ -27,56 +31,28 @@ Scan: Capture the image.
 
 Note: The model is optimized for spaced/touching seeds, not deep heaps.
 
-📊 Performance Metrics
+
+
+# Performance Metrics
 
 The model was trained on a custom dataset of ~500 annotated instances using the "Fresh Start" strategy (High-Quality Data Focus).
 
-Class
+Class - Grade A --- Precision: 0.85 --- Recall: 1.00 --- Status: Zero loss of good product
 
-Precision
+Class - Grade B --- Precision: 1.00 --- Recall: 0.84 --- Status: Zero false rejection of good seeds
 
-Recall
+Class - Impurity --- Precision: 0.95 --- Recall: 0.64 --- Status: High confidence detection
 
-Status
-
-Grade A (Premium)
-
-0.85
-
-1.00
-
-✅ Zero loss of good product
-
-Grade B (Defect)
-
-1.00
-
-0.84
-
-✅ Zero false rejection of good seeds
-
-Impurity
-
-0.95
-
-0.64
-
-⚠️ High confidence detection
-
-Overall mAP
+Overall mAP  ~0.90 (Production Ready)
 
 
 
-~0.90
-
-Production Ready
-
-💻 Installation & Usage
+# Installation & Usage
 
 1. Clone the Repository
 
-git clone [https://github.com/your-username/cassia-grader.git](https://github.com/your-username/cassia-grader.git)
-cd cassia-grader
+git clone 
+cd SeedIQ
 
 
 2. Install Dependencies
@@ -85,7 +61,6 @@ It is recommended to use a virtual environment.
 
 pip install -r requirements.txt
 
-
 (Note: Requires ultralytics, streamlit, opencv-python, numpy<2.0)
 
 3. Run the App
@@ -93,16 +68,17 @@ pip install -r requirements.txt
 streamlit run app.py
 
 
-📂 Project Structure
+# Project Structure
 
-cassia-grader/
-├── app.py              # Main application logic (Streamlit)
-├── best.pt             # Trained YOLOv8 model weights
-├── requirements.txt    # Python dependencies
-└── README.md           # Project documentation
+SeedIQ/
+- app.py                   # Main application logic (Streamlit)
+-  Cassia_model_v1.pt                # Trained YOLOv8 model weights
+- requirements.txt         # Python dependencies
+- README.md         # Project documentation
+- SeedIQ.ipynb             #YOLOv8 notebook
 
 
-🧠 Technical Challenges Solved
+# Technical Challenges Solved
 
 The "Blue Seed" Anomaly: Solved an OpenCV BGR vs. Streamlit RGB color space conflict by implementing a permanent numpy-based channel flip [:, :, ::-1] in the rendering loop.
 
@@ -110,12 +86,11 @@ The Pile Problem: Initially, models failed on piled seeds (40% accuracy). We piv
 
 Confidence Hallucination: Tuned the confidence threshold to 0.50 to prevent the model from guessing on textured backgrounds.
 
-🤝 Acknowledgments
+
+# Acknowledgments
 
 YOLOv8 by Ultralytics for the detection architecture.
 
 Streamlit for the rapid application framework.
 
 Roboflow for dataset management and annotation tools.
-
-Author: [Your Name]
